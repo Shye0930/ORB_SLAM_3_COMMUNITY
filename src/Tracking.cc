@@ -50,9 +50,11 @@ Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer,
 {
     // Load camera parameters from settings file
     if(settings){
+        std::cout << "[INFO] Tracking.cc settings found. Running newParameterLoader()" << std::endl;
         newParameterLoader(settings);
     }
     else{
+        std::cout << "[INFO] Tracking.cc settings NOT found. Running ParseCamParamFile()" << std::endl;
         cv::FileStorage fSettings(strSettingPath, cv::FileStorage::READ);
 
         bool b_parse_cam = ParseCamParamFile(fSettings);
@@ -2036,7 +2038,7 @@ void Tracking::Track()
         else
         {
             // Localization Mode: Local Mapping is deactivated (TODO Not available in inertial mode)
-            if(mState==LOST)
+            if(mState==LOST || mState==RECENTLY_LOST )
             {
                 if(mSensor == System::IMU_MONOCULAR || mSensor == System::IMU_STEREO || mSensor == System::IMU_RGBD)
                     Verbose::PrintMess("IMU. State LOST", Verbose::VERBOSITY_NORMAL);
