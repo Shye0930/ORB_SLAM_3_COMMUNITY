@@ -1,5 +1,5 @@
 # ORB-SLAM-COMMUNITY
-[![Build ORB_SLAM](https://github.com/shye0930/ORB_SLAM_COMMUNITY/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/shye0930/ORB_SLAM_COMMUNITY/actions/workflows/cmake-multi-platform.yml)
+[![Build ORB_SLAM](https://github.com/shye0930/ORB_SLAM_3_COMMUNITY/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/shye0930/ORB_SLAM_3_COMMUNITY/actions/workflows/cmake-multi-platform.yml)
 
 
 <details>
