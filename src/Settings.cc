@@ -337,6 +337,37 @@ namespace ORB_SLAM3 {
         if(cameraType_ == Rectified){
             b_ = readParameter<float>(fSettings,"Stereo.b",found);
             bf_ = b_ * calibration1_->getParameter(0);
+
+            // [HACK] Add the second camera using my own code
+            // //Read intrinsic parameters
+            // float fx = readParameter<float>(fSettings,"Camera2.fx",found);
+            // float fy = readParameter<float>(fSettings,"Camera2.fy",found);
+            // float cx = readParameter<float>(fSettings,"Camera2.cx",found);
+            // float cy = readParameter<float>(fSettings,"Camera2.cy",found);
+
+
+            // vCalibration = {fx, fy, cx, cy};
+
+            // calibration2_ = new Pinhole(vCalibration);
+            // originalCalib2_ = new Pinhole(vCalibration);
+
+            // //Check if it is a distorted PinHole
+            // readParameter<float>(fSettings,"Camera2.k1",found,false);
+            // if(found){
+            //     readParameter<float>(fSettings,"Camera2.k3",found,false);
+            //     if(found){
+            //         vPinHoleDistortion2_.resize(5);
+            //         vPinHoleDistortion2_[4] = readParameter<float>(fSettings,"Camera2.k3",found);
+            //     }
+            //     else{
+            //         vPinHoleDistortion2_.resize(4);
+            //     }
+            //     vPinHoleDistortion2_[0] = readParameter<float>(fSettings,"Camera2.k1",found);
+            //     vPinHoleDistortion2_[1] = readParameter<float>(fSettings,"Camera2.k2",found);
+            //     vPinHoleDistortion2_[2] = readParameter<float>(fSettings,"Camera2.p1",found);
+            //     vPinHoleDistortion2_[3] = readParameter<float>(fSettings,"Camera2.p2",found);
+            // }
+
         }
         else{
             cv::Mat cvTlr = readParameter<cv::Mat>(fSettings,"Stereo.T_c1_c2",found);

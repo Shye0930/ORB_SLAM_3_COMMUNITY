@@ -1,20 +1,20 @@
 /**
-* This file is part of ORB-SLAM3
-*
-* Copyright (C) 2017-2021 Carlos Campos, Richard Elvira, Juan J. Gómez Rodríguez, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
-* Copyright (C) 2014-2016 Raúl Mur-Artal, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
-*
-* ORB-SLAM3 is free software: you can redistribute it and/or modify it under the terms of the GNU General Public
-* License as published by the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* ORB-SLAM3 is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
-* the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License along with ORB-SLAM3.
-* If not, see <http://www.gnu.org/licenses/>.
-*/
+ * This file is part of ORB-SLAM3
+ *
+ * Copyright (C) 2017-2021 Carlos Campos, Richard Elvira, Juan J. Gómez Rodríguez, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
+ * Copyright (C) 2014-2016 Raúl Mur-Artal, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
+ *
+ * ORB-SLAM3 is free software: you can redistribute it and/or modify it under the terms of the GNU General Public
+ * License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ORB-SLAM3 is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
+ * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with ORB-SLAM3.
+ * If not, see <http://www.gnu.org/licenses/>.
+ */
 
 
 #ifndef SYSTEM_H
@@ -85,6 +85,7 @@ class System
 public:
     // Input sensor
     enum eSensor{
+        NOT_SET=-1,
         MONOCULAR=0,
         STEREO=1,
         RGBD=2,
@@ -168,7 +169,7 @@ public:
     void SaveTrajectoryKITTI(const string &filename);
 
     // TODO: Save/Load functions
-    // SaveMap(const string &filename);
+    bool SaveMap(const string &filename);
     // LoadMap(const string &filename);
 
     // Information from most recent processed frame
@@ -176,6 +177,16 @@ public:
     int GetTrackingState();
     std::vector<MapPoint*> GetTrackedMapPoints();
     std::vector<cv::KeyPoint> GetTrackedKeyPointsUn();
+
+    std::vector<cv::KeyPoint> GetTrackedKeyPoints();
+    std::vector<MapPoint*> GetAllMapPoints();
+    std::vector<Sophus::SE3f> GetAllKeyframePoses();
+    cv::Mat GetCurrentFrame();
+
+    Sophus::SE3f GetCamTwc();
+    Sophus::SE3f GetImuTwb();
+    Eigen::Vector3f GetImuVwb();
+    bool isImuPreintegrated();
 
     // For debugging
     double GetTimeFromIMUInit();
@@ -186,15 +197,15 @@ public:
 
     float GetImageScale();
 
-#ifdef REGISTER_TIMES
+    #ifdef REGISTER_TIMES
     void InsertRectTime(double& time);
     void InsertResizeTime(double& time);
     void InsertTrackTime(double& time);
-#endif
+    #endif
 
 private:
 
-    void SaveAtlas(int type);
+    bool SaveAtlas(int type);
     bool LoadAtlas(int type);
 
     string CalculateCheckSum(string filename, int type);
@@ -253,6 +264,8 @@ private:
     int mTrackingState;
     std::vector<MapPoint*> mTrackedMapPoints;
     std::vector<cv::KeyPoint> mTrackedKeyPointsUn;
+
+    std::vector<cv::KeyPoint> mTrackedKeyPoints;
     std::mutex mMutexState;
 
     //
