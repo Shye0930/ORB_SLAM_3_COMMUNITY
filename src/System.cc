@@ -1529,7 +1529,8 @@ bool System::LoadAtlas(int type)
     }
     else if(type == BINARY_FILE) // File binary
     {
-        cout << "Starting to read the save binary file " << pathLoadFileName.c_str() << endl;        std::ifstream ifs(pathLoadFileName, std::ios::binary);
+        cout << "Starting to read the save binary file " << pathLoadFileName.c_str() << endl;       
+        std::ifstream ifs(pathLoadFileName, std::ios::binary);
         if(!ifs.good())
         {
             cout << "Load file not found" << endl;
