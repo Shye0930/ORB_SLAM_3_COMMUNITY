@@ -77,3 +77,9 @@ jobs:
         cd build
         cmake .. -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }} -DCMAKE_C_COMPILER=${{ matrix.c_compiler }} -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
         make -j$(nproc)
+
+    # Converts the vocabulary to a binary format
+    - name: Convert vocabulary to binary
+      run: |
+        echo "Converting vocabulary to binary"
+        ./tools/bin_vocabulary
