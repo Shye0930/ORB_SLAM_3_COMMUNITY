@@ -1,9 +1,21 @@
 # ORB-SLAM-COMMUNITY
 [![Build ORB_SLAM](https://github.com/shye0930/ORB_SLAM_3_COMMUNITY/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/shye0930/ORB_SLAM_3_COMMUNITY/actions/workflows/cmake-multi-platform.yml)
 
+This repository contains a heavily modified version of ORB-SLAM3 COMMUNITY version, with enhancements to enable access to additional data outputs and integration with ROS. Specifically, I have added functionality to retrieve and publish the following components from the ORB-SLAM3 system:
+
+- **Camera Pose**: Extracted for real-time tracking and navigation purposes, published as a ROS topic.
+
+- **Tracking Image**: The visual feed displayed in the ORB-SLAM3 UI, now accessible and published programmatically via ROS.
+
+- **Key Feature Markers**: Data related to detected and tracked key features in the environment, available for ROS publishing.
+
+- **Cloud Points**: Both tracked points and tracked keypoints, accessible and published for further processing or mapping applications via ROS.
+
+These modifications make this version of ORB-SLAM3 more versatile for applications requiring detailed access to its internal data structures allows for seamless integration with ROS for perception and navigation.
+
 
 <details>
-  <summary> ORB_SLAM_COMMUNITY</Summary>
+  <summary> ORB_SLAM_COMMUNITY (Click me)</Summary>
 
   The [original ORB_SLAM_COMMUNITY](https://github.com/jeremysalwen/ORB_SLAM_COMMUNITY/tree/main)
   This is a community maintained fork of https://github.com/UZ-SLAMLab/ORB_SLAM3.  The official repository has been inactive for over two years, and has accumulated 26 unresolved pull requests and nearly 500 unresolved issues.  Additionally there are numerous bugfixes and improvements scattered throughout the 2.5k+ forks on GitHub.  This fork is an attempt to create a *community consensus* version of ORB_SLAM3 that incorporates all of the best pieces that the community has created.
