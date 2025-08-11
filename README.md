@@ -3,13 +3,13 @@
 
 This repository contains a heavily modified version of ORB-SLAM3 COMMUNITY version, with enhancements to enable access to additional data outputs and integration with ROS. Specifically, I have added functionality to retrieve and publish the following components from the ORB-SLAM3 system:
 
-- **Camera Pose**: Extracted for real-time tracking and navigation purposes, published as a ROS topic.
+- **Camera Pose**: Extracted for real-time tracking and navigation purposes.
 
-- **Tracking Image**: The visual feed displayed in the ORB-SLAM3 UI, now accessible and published programmatically via ROS.
+- **Tracking Image**: The visual feed displayed in the ORB-SLAM3 UI
 
-- **Key Feature Markers**: Data related to detected and tracked key features in the environment, available for ROS publishing.
+- **Key Feature Markers**: Data related to detected and tracked key features in the environment
 
-- **Cloud Points**: Both tracked points and tracked keypoints, accessible and published for further processing or mapping applications via ROS.
+- **Cloud Points**: Both tracked points and tracked keypoints, accessible and published for further processing or mapping applications
 
 These modifications make this version of ORB-SLAM3 more versatile for applications requiring detailed access to its internal data structures allows for seamless integration with ROS for perception and navigation.
 
